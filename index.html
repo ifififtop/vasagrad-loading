@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090d14">
+<title>ВАСЯГРАД</title>
+<style>
+:root{color-scheme:dark;--bg:#090d14;--panel:rgba(17,24,36,.78);--line:rgba(255,255,255,.11);--muted:#8d9aab;--text:#f3f6fb;--accent:#8bbcff}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--text)}
+body:before,body:after{content:"";position:absolute;inset:0;pointer-events:none}body:before{background:radial-gradient(ellipse at 75% 18%,rgba(72,132,201,.19),transparent 42%),radial-gradient(ellipse at 12% 90%,rgba(77,107,160,.15),transparent 40%),linear-gradient(135deg,#080c12 0%,#101827 55%,#090d14 100%)}
+body:after{opacity:.22;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(90deg,transparent,#000 55%,#000)}
+.shell{position:relative;z-index:1;min-height:100%;display:flex;align-items:center;padding:7vw}.content{width:min(760px,100%)}.eyebrow{display:flex;align-items:center;gap:12px;color:#a9b9cc;font-size:12px;letter-spacing:.24em;text-transform:uppercase}.dot{width:7px;height:7px;border-radius:50%;background:#8bbcff;box-shadow:0 0 16px #8bbcff}
+h1{font-size:clamp(54px,10vw,112px);line-height:.95;letter-spacing:-.075em;margin:28px 0 18px;font-weight:760}.sub{font-size:clamp(14px,2vw,17px);color:#aab6c5;letter-spacing:.02em;margin:0 0 54px}.panel{width:min(510px,100%);padding:22px 24px;background:var(--panel);border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(18px);box-shadow:0 24px 80px rgba(0,0,0,.28)}.topline{display:flex;justify-content:space-between;align-items:center;gap:14px;font-size:13px}.muted{color:var(--muted)}.track{height:4px;background:rgba(255,255,255,.1);border-radius:20px;overflow:hidden;margin:17px 0 13px}.fill{height:100%;width:12%;border-radius:20px;background:linear-gradient(90deg,#5e8fca,#b4d5ff);box-shadow:0 0 18px rgba(139,188,255,.55);animation:load 16s ease-in-out infinite alternate}@keyframes load{0%{width:9%}45%{width:48%}100%{width:86%}}.bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:12px;color:var(--muted)}.music{display:flex;align-items:center;gap:12px;margin-top:18px;padding-top:17px;border-top:1px solid var(--line)}.equalizer{display:flex;align-items:center;gap:3px;height:20px}.equalizer i{display:block;width:3px;height:6px;border-radius:4px;background:#8bbcff;opacity:.8}.playing .equalizer i{animation:wave .7s ease-in-out infinite alternate}.playing .equalizer i:nth-child(2){animation-delay:.15s}.playing .equalizer i:nth-child(3){animation-delay:.3s}.playing .equalizer i:nth-child(4){animation-delay:.08s}@keyframes wave{to{height:18px;opacity:1}}.song{min-width:0;flex:1}.song strong{display:block;font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.song span{display:block;font-size:11px;color:var(--muted);margin-top:3px}.controls{display:flex;gap:7px}.btn{width:34px;height:34px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.045);color:#e8f1fb;cursor:pointer;font-size:14px}.btn:hover{background:rgba(139,188,255,.15);border-color:rgba(139,188,255,.35)}.foot{position:fixed;z-index:1;right:7vw;bottom:6vh;color:#667487;font-size:11px;letter-spacing:.13em;text-transform:uppercase}.hint{margin-top:12px;color:#728196;font-size:11px}
+@media(max-width:600px){.shell{padding:28px}.sub{margin-bottom:38px}.panel{padding:18px}.foot{display:none}}
+</style>
+</head>
+<body>
+<main class="shell"><section class="content">
+<div class="eyebrow"><span class="dot"></span><span>городская жизнь начинается здесь</span></div>
+<h1>ВАСЯГРАД</h1>
+<p class="sub">Твой город. Твои истории.</p>
+<div class="panel" id="playerPanel">
+ <div class="topline"><span>ПОДКЛЮЧЕНИЕ К СЕРВЕРУ</span><span class="muted">GARRY'S MOD</span></div>
+ <div class="track"><div class="fill"></div></div>
+ <div class="bottom"><span>Загружаем город…</span><span>Пожалуйста, подожди</span></div>
+ <div class="music">
+  <div class="equalizer" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="song"><strong id="songName">Музыка выключена</strong><span id="songState">Нажми ▶, чтобы включить</span></div>
+  <div class="controls"><button class="btn" id="toggle" title="Включить или выключить музыку" aria-label="Включить музыку">▶</button><button class="btn" id="next" title="Следующий трек" aria-label="Следующий трек">↻</button></div>
+ </div>
+ <div class="hint">Музыку можно отключить в любой момент</div>
+</div>
+</section></main>
+<div class="foot">ВАСЯГРАД · ДОБРО ПОЖАЛОВАТЬ</div>
+<audio id="audio" preload="none"></audio>
+<script>
+(() => {
+ const tracks = [
+  {name:'Фура переехала мои мозги',src:'music/track-01.mp3'},
+  {name:'Мистер токон пиздабол',src:'music/track-02.mp3'},
+  {name:'Доброград крашат',src:'music/track-03.mp3'}
+ ];
+ const audio=document.getElementById('audio'),toggle=document.getElementById('toggle'),next=document.getElementById('next');
+ const name=document.getElementById('songName'),state=document.getElementById('songState'),panel=document.getElementById('playerPanel');
+ let index=0,enabled=false;
+ function show(){name.textContent=tracks[index].name;state.textContent=enabled?'Играет · плейлист ВАСЯГРАД':'Нажми ▶, чтобы включить';toggle.textContent=enabled?'Ⅱ':'▶';toggle.setAttribute('aria-label',enabled?'Выключить музыку':'Включить музыку');panel.classList.toggle('playing',enabled)}
+ async function play(){audio.src=tracks[index].src;audio.volume=.35;try{await audio.play();enabled=true}catch(e){enabled=false;state.textContent='Браузер ждёт нажатия ▶'}show()}
+ toggle.addEventListener('click',async()=>{if(enabled){audio.pause();enabled=false;show()}else await play()});
+ next.addEventListener('click',async()=>{index=(index+1)%tracks.length;if(enabled)await play();else show()});
+ audio.addEventListener('ended',()=>{index=(index+1)%tracks.length;play()});
+ audio.addEventListener('error',()=>{enabled=false;state.textContent='Не удалось загрузить аудио';show()});
+ show();
+})();
+</script>
+</body>
+</html>
