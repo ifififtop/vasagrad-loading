@@ -69,7 +69,7 @@ h1 span{display:block;color:transparent;-webkit-text-stroke:1px rgba(222,237,255
  ];
  const $=id=>document.getElementById(id);
  const audio=$('audio'),toggle=$('toggle'),next=$('next'),panel=$('playerPanel');
- let index=0,playing=false,total=0,needed=0,gotTotal=false,lastFile='';
+ let index=0,playing=false,totalFiles=0,filesNeeded=0,gotTotal=false,lastFile='';
  function renderMusic(){
   $('songName').textContent=tracks[index].name;
   $('songState').textContent=playing?'Сейчас играет':'Нажми ▶, если звук заблокирован';
@@ -89,13 +89,13 @@ h1 span{display:block;color:transparent;-webkit-text-stroke:1px rgba(222,237,255
  audio.addEventListener('error',()=>{$('songState').textContent='Не удалось загрузить аудиофайл';playing=false;renderMusic()});
  function setProgress(){
   if(!gotTotal)return;
-  const done=Math.max(0,Math.min(total,total-needed));
-  const p=total===0?100:Math.round(done/total*100);
+  const done=Math.max(0,Math.min(totalFiles,totalFiles-filesNeeded));
+  const p=totalFiles===0?100:Math.round(done/totalFiles*100);
   $('progressFill').style.width=p+'%';
   $('progressPercent').textContent=p+'%';
-  $('progressStatus').textContent=needed>0?'Загрузка файлов':'Файлы загружены';
+  $('progressStatus').textContent=filesNeeded>0?'Загрузка файлов':'Файлы загружены';
   $('serverState').textContent=needed>0?'DOWNLOADING':'FILES READY';
-  $('detailStatus').textContent=needed>0?'Загружено файлов: '+done+' из '+total:'Загрузка файлов завершена';
+  $('detailStatus').textContent=needed>0?'Загружено файлов: '+done+' из '+totalFiles:'Загрузка файлов завершена';
  }
  // Garry's Mod loading-screen callbacks (Facepunch API).
  window.GameDetails=function(serverName,serverURL,mapName,maxPlayers,steamID,gameMode,volume,language){
@@ -104,22 +104,14 @@ h1 span{display:block;color:transparent;-webkit-text-stroke:1px rgba(222,237,255
   if(gameMode)$('serverState').textContent=String(gameMode).toUpperCase();
   if(typeof volume==='number')audio.volume=Math.max(0,Math.min(1,volume));
  };
- window.SetFilesTotal=function(total){
-  total=Math.max(0,Number(total)||0);
-  if(!gotTotal||total!==0){total=total;totalFiles=total;total=totalFiles;}
-  total=totalFiles;
-  total=Number(total)||0;
-  total= Math.max(0,total);
-  window.__vasagradTotal=total;
-  totalFiles=total;
+ window.SetFilesTotal=function(count){
+  totalFiles=Math.max(0,Number(count)||0);
+  filesNeeded=totalFiles;
   gotTotal=true;
-  needed=total;
   setProgress();
  };
  window.SetFilesNeeded=function(count){
-  needed=Math.max(0,Number(count)||0);
-  gotTotal=true;
-  if(!Number.isFinite(totalFiles))totalFiles=needed;
+  filesNeeded=Math.max(0,Number(count)||0);
   setProgress();
  };
  window.DownloadingFile=function(fileName){
