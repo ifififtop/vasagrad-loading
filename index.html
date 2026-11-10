@@ -94,8 +94,8 @@ h1 span{display:block;color:transparent;-webkit-text-stroke:1px rgba(222,237,255
   $('progressFill').style.width=p+'%';
   $('progressPercent').textContent=p+'%';
   $('progressStatus').textContent=filesNeeded>0?'Загрузка файлов':'Файлы загружены';
-  $('serverState').textContent=needed>0?'DOWNLOADING':'FILES READY';
-  $('detailStatus').textContent=needed>0?'Загружено файлов: '+done+' из '+totalFiles:'Загрузка файлов завершена';
+  $('serverState').textContent=filesNeeded>0?'DOWNLOADING':'FILES READY';
+  $('detailStatus').textContent=filesNeeded>0?'Загружено файлов: '+done+' из '+totalFiles:'Загрузка файлов завершена';
  }
  // Garry's Mod loading-screen callbacks (Facepunch API).
  window.GameDetails=function(serverName,serverURL,mapName,maxPlayers,steamID,gameMode,volume,language){
