@@ -3,73 +3,139 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#090d14">
-<title>ВАСЯГРАД</title>
+<meta name="theme-color" content="#080d15">
+<title>ВАСЯГРАД — подключение</title>
 <style>
-:root{color-scheme:dark;--bg:#090d14;--panel:rgba(17,24,36,.78);--line:rgba(255,255,255,.11);--muted:#8d9aab;--text:#f3f6fb;--accent:#8bbcff}
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--text)}
-body:before,body:after{content:"";position:absolute;inset:0;pointer-events:none}body:before{background:radial-gradient(ellipse at 75% 18%,rgba(72,132,201,.19),transparent 42%),radial-gradient(ellipse at 12% 90%,rgba(77,107,160,.15),transparent 40%),linear-gradient(135deg,#080c12 0%,#101827 55%,#090d14 100%)}
-body:after{opacity:.22;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(90deg,transparent,#000 55%,#000)}
-.shell{position:relative;z-index:1;min-height:100%;display:flex;align-items:center;padding:7vw}.content{width:min(760px,100%)}.eyebrow{display:flex;align-items:center;gap:12px;color:#a9b9cc;font-size:12px;letter-spacing:.24em;text-transform:uppercase}.dot{width:7px;height:7px;border-radius:50%;background:#8bbcff;box-shadow:0 0 16px #8bbcff}
-h1{font-size:clamp(54px,10vw,112px);line-height:.95;letter-spacing:-.075em;margin:28px 0 18px;font-weight:760}.sub{font-size:clamp(14px,2vw,17px);color:#aab6c5;letter-spacing:.02em;margin:0 0 54px}.panel{width:min(510px,100%);padding:22px 24px;background:var(--panel);border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(18px);box-shadow:0 24px 80px rgba(0,0,0,.28)}.topline{display:flex;justify-content:space-between;align-items:center;gap:14px;font-size:13px}.muted{color:var(--muted)}.track{height:4px;background:rgba(255,255,255,.1);border-radius:20px;overflow:hidden;margin:17px 0 13px}.fill{height:100%;width:0%;border-radius:20px;background:linear-gradient(90deg,#5e8fca,#b4d5ff);box-shadow:0 0 18px rgba(139,188,255,.55);transition:width .2s ease}.bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:12px;color:var(--muted)}.music{display:flex;align-items:center;gap:12px;margin-top:18px;padding-top:17px;border-top:1px solid var(--line)}.equalizer{display:flex;align-items:center;gap:3px;height:20px}.equalizer i{display:block;width:3px;height:6px;border-radius:4px;background:#8bbcff;opacity:.8}.playing .equalizer i{animation:wave .7s ease-in-out infinite alternate}.playing .equalizer i:nth-child(2){animation-delay:.15s}.playing .equalizer i:nth-child(3){animation-delay:.3s}.playing .equalizer i:nth-child(4){animation-delay:.08s}@keyframes wave{to{height:18px;opacity:1}}.song{min-width:0;flex:1}.song strong{display:block;font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.song span{display:block;font-size:11px;color:var(--muted);margin-top:3px}.controls{display:flex;gap:7px}.btn{width:34px;height:34px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.045);color:#e8f1fb;cursor:pointer;font-size:14px}.btn:hover{background:rgba(139,188,255,.15);border-color:rgba(139,188,255,.35)}.foot{position:fixed;z-index:1;right:7vw;bottom:6vh;color:#667487;font-size:11px;letter-spacing:.13em;text-transform:uppercase}.hint{margin-top:12px;color:#728196;font-size:11px}
-@media(max-width:600px){.shell{padding:28px}.sub{margin-bottom:38px}.panel{padding:18px}.foot{display:none}}
+:root{color-scheme:dark;--bg:#080d15;--panel:rgba(13,21,33,.82);--line:rgba(166,195,228,.16);--muted:#8190a5;--text:#f2f6fc;--blue:#82baff;--cyan:#8de4ed}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);font-family:Inter,Arial,sans-serif;color:var(--text)}
+body{position:relative;background:radial-gradient(ellipse at 78% 25%,rgba(43,104,166,.24),transparent 38%),radial-gradient(ellipse at 18% 88%,rgba(30,72,112,.2),transparent 38%),linear-gradient(125deg,#080d15 0%,#101c2c 52%,#080d15 100%)}
+body:before{content:"";position:absolute;inset:0;opacity:.16;background-image:linear-gradient(rgba(160,198,235,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(160,198,235,.12) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(110deg,transparent 8%,#000 100%)}
+body:after{content:"";position:absolute;inset:auto -10% -48% 30%;height:80%;border:1px solid rgba(130,186,255,.12);border-radius:50%;transform:rotate(-12deg);box-shadow:0 0 0 40px rgba(130,186,255,.025),0 0 0 90px rgba(130,186,255,.02);pointer-events:none}
+.wrap{position:relative;z-index:1;min-height:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,440px);align-items:center;gap:6vw;padding:7vw}
+.brand{max-width:720px}.overline{display:flex;align-items:center;gap:12px;color:#a9bed5;font-size:11px;letter-spacing:.28em;text-transform:uppercase}.live{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 16px var(--cyan)}
+h1{font-size:clamp(62px,11vw,140px);line-height:.86;letter-spacing:-.085em;margin:30px 0 24px;font-weight:850}
+h1 span{display:block;color:transparent;-webkit-text-stroke:1px rgba(222,237,255,.72)}
+.subtitle{font-size:clamp(14px,1.5vw,18px);color:#a7b6c9;letter-spacing:.04em;margin:0;max-width:420px;line-height:1.65}
+.coordinates{display:flex;gap:24px;margin-top:48px;color:#687c95;font-size:10px;letter-spacing:.17em;text-transform:uppercase}.coordinates b{display:block;color:#c1d0e1;font-weight:500;margin-top:7px;letter-spacing:.08em}
+.card{width:100%;padding:26px;background:linear-gradient(145deg,rgba(20,32,49,.9),rgba(10,17,28,.88));border:1px solid var(--line);border-radius:20px;backdrop-filter:blur(20px);box-shadow:0 28px 90px rgba(0,0,0,.38)}
+.card-head{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:10px;letter-spacing:.19em;color:#b9c9dc;text-transform:uppercase}.chip{border:1px solid rgba(141,228,237,.25);border-radius:30px;padding:7px 10px;color:var(--cyan);font-size:9px;letter-spacing:.12em;white-space:nowrap}
+.stage{margin-top:30px}.stage-label{display:flex;justify-content:space-between;align-items:end;gap:12px}.stage-label span:first-child{font-size:14px;font-weight:600}.percent{font-size:24px;letter-spacing:-.05em;color:#d9eaff;font-variant-numeric:tabular-nums}
+.track{height:5px;background:rgba(255,255,255,.09);border-radius:10px;overflow:hidden;margin:14px 0 12px}.fill{height:100%;width:0%;border-radius:10px;background:linear-gradient(90deg,#5d9de7,#91e4ed);box-shadow:0 0 18px rgba(116,190,238,.55);transition:width .22s ease}
+.status{min-height:34px;color:#91a2b8;font-size:11px;line-height:1.5;overflow-wrap:anywhere}.file{margin-top:9px;padding-top:13px;border-top:1px solid var(--line);color:#6f8198;font-size:10px;line-height:1.5;min-height:31px;overflow-wrap:anywhere}
+.music{display:flex;align-items:center;gap:12px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}.bars{display:flex;align-items:center;gap:3px;height:23px;width:22px}.bars i{width:3px;height:6px;border-radius:4px;background:var(--cyan);opacity:.8}.playing .bars i{animation:eq .65s ease-in-out infinite alternate}.playing .bars i:nth-child(2){animation-delay:.13s}.playing .bars i:nth-child(3){animation-delay:.27s}.playing .bars i:nth-child(4){animation-delay:.08s}@keyframes eq{to{height:21px;opacity:1}}
+.song{min-width:0;flex:1}.song strong{display:block;font-size:11px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.song small{display:block;margin-top:5px;color:#7f91a8;font-size:10px}.buttons{display:flex;gap:7px}.btn{width:34px;height:34px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.04);color:#eaf4ff;cursor:pointer}.btn:hover{border-color:rgba(130,186,255,.5);background:rgba(130,186,255,.12)}
+.note{margin-top:14px;color:#61738a;font-size:9px;letter-spacing:.04em}.footer{position:fixed;z-index:1;left:7vw;right:7vw;bottom:25px;display:flex;justify-content:space-between;color:#5d6e84;font-size:9px;letter-spacing:.2em;text-transform:uppercase}
+@media(max-width:800px){.wrap{grid-template-columns:1fr;align-content:center;gap:36px;padding:34px}.brand{max-width:560px}h1{font-size:clamp(58px,15vw,100px);margin:22px 0 15px}.coordinates{margin-top:22px}.card{max-width:520px}.footer{left:34px;right:34px}}
+@media(max-width:480px){.wrap{padding:24px;gap:28px}.card{padding:20px}.coordinates{gap:16px}.footer{display:none}}
 </style>
 </head>
 <body>
-<main class="shell"><section class="content">
-<div class="eyebrow"><span class="dot"></span><span>городская жизнь начинается здесь</span></div>
-<h1>ВАСЯГРАД</h1>
-<p class="sub">Твой город. Твои истории.</p>
-<div class="panel" id="playerPanel">
- <div class="topline"><span>ПОДКЛЮЧЕНИЕ К СЕРВЕРУ</span><span class="muted">GARRY'S MOD</span></div>
- <div class="track"><div class="fill"></div></div>
- <div class="bottom"><span>Загружаем город…</span><span>Пожалуйста, подожди</span></div>
- <div class="music">
-  <div class="equalizer" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-  <div class="song"><strong id="songName">Музыка выключена</strong><span id="songState">Нажми ▶, чтобы включить</span></div>
-  <div class="controls"><button class="btn" id="toggle" title="Включить или выключить музыку" aria-label="Включить музыку">▶</button><button class="btn" id="next" title="Следующий трек" aria-label="Следующий трек">↻</button></div>
- </div>
- <div class="hint">Музыку можно отключить в любой момент</div>
-</div>
-</section></main>
-<div class="foot">ВАСЯГРАД · ДОБРО ПОЖАЛОВАТЬ</div>
-<audio id="audio" preload="none"></audio>
+<main class="wrap">
+ <section class="brand">
+  <div class="overline"><span class="live"></span><span>Городская жизнь начинается здесь</span></div>
+  <h1>ВАСЯ<span>ГРАД</span></h1>
+  <p class="subtitle">Твой город. Твои истории. Добро пожаловать домой.</p>
+  <div class="coordinates">
+   <div>РЕГИОН<b>RUSSIA · RP</b></div>
+   <div>ПЛАТФОРМА<b>GARRY'S MOD</b></div>
+   <div>СТАТУС<b id="serverState">CONNECTING</b></div>
+  </div>
+ </section>
+ <section class="card" id="playerPanel">
+  <div class="card-head"><span>Подключение к серверу</span><span class="chip">VASЯGRAD RP</span></div>
+  <div class="stage">
+   <div class="stage-label"><span id="progressStatus">Ожидание данных игры…</span><span class="percent" id="progressPercent">—</span></div>
+   <div class="track"><div class="fill" id="progressFill"></div></div>
+   <div class="status" id="detailStatus">Garry’s Mod передаст сюда этапы подключения.</div>
+   <div class="file" id="fileStatus">Файлы для загрузки пока не запрошены</div>
+  </div>
+  <div class="music">
+   <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+   <div class="song"><strong id="songName">Плейлист ВАСЯГРАД</strong><small id="songState">Пробуем включить музыку…</small></div>
+   <div class="buttons"><button class="btn" id="toggle" title="Включить или выключить музыку" aria-label="Включить музыку">▶</button><button class="btn" id="next" title="Следующий трек" aria-label="Следующий трек">↻</button></div>
+  </div>
+  <div class="note">Музыку можно отключить в любой момент</div>
+ </section>
+</main>
+<div class="footer"><span>ВАСЯГРАД ROLEPLAY</span><span>СОЗДАНО ДЛЯ ТВОИХ ИСТОРИЙ</span></div>
+<audio id="audio" preload="auto"></audio>
 <script>
 (() => {
- const tracks = [
+ const tracks=[
   {name:'Фура переехала мои мозги',src:'music/track-01.mp3'},
   {name:'Мистер токон пиздабол',src:'music/track-02.mp3'},
   {name:'Доброград крашат',src:'music/track-03.mp3'}
  ];
- const audio=document.getElementById('audio'),toggle=document.getElementById('toggle'),next=document.getElementById('next');
- const name=document.getElementById('songName'),state=document.getElementById('songState'),panel=document.getElementById('playerPanel');
- const fill=document.getElementById('progressFill'),percent=document.getElementById('progressPercent'),status=document.getElementById('progressStatus');
- let index=0,enabled=false,totalFiles=0,filesNeeded=0;
- function show(){name.textContent=tracks[index].name;toggle.textContent=enabled?'Ⅱ':'▶';toggle.setAttribute('aria-label',enabled?'Выключить музыку':'Включить музыку');panel.classList.toggle('playing',enabled)}
- async function play(){audio.src=tracks[index].src;audio.volume=.35;try{await audio.play();enabled=true;state.textContent='Играет · плейлист ВАСЯГРАД'}catch(e){enabled=false;state.textContent='Автозапуск заблокирован — нажми ▶'}show()}
- toggle.addEventListener('click',async()=>{if(enabled){audio.pause();enabled=false;state.textContent='Музыка выключена';show()}else await play()});
- next.addEventListener('click',async()=>{index=(index+1)%tracks.length;if(enabled)await play();else{audio.src=tracks[index].src;show()}});
- audio.addEventListener('ended',()=>{index=(index+1)%tracks.length;play()});
- audio.addEventListener('error',()=>{enabled=false;state.textContent='Аудиофайл не найден — проверь папку music';show()});
- function updateProgress(){
-   if(totalFiles>0){
-     const done=Math.max(0,Math.min(totalFiles,totalFiles-filesNeeded));
-     const p=Math.round(done/totalFiles*100);
-     fill.style.width=p+'%';percent.textContent=p+'%';
-     status.textContent=filesNeeded>0?'Загрузка файлов…':'Файлы загружены';
-   }
+ const $=id=>document.getElementById(id);
+ const audio=$('audio'),toggle=$('toggle'),next=$('next'),panel=$('playerPanel');
+ let index=0,playing=false,total=0,needed=0,gotTotal=false,lastFile='';
+ function renderMusic(){
+  $('songName').textContent=tracks[index].name;
+  $('songState').textContent=playing?'Сейчас играет':'Нажми ▶, если звук заблокирован';
+  toggle.textContent=playing?'Ⅱ':'▶';
+  toggle.setAttribute('aria-label',playing?'Выключить музыку':'Включить музыку');
+  panel.classList.toggle('playing',playing);
  }
- // Callbacks provided by the Garry's Mod loading screen.
- window.SetFilesTotal=function(total){totalFiles=Math.max(0,Number(total)||0);filesNeeded=totalFiles;updateProgress()};
- window.SetFilesNeeded=function(needed){filesNeeded=Math.max(0,Number(needed)||0);updateProgress()};
- window.DownloadingFile=function(fileName){status.textContent='Загрузка: '+String(fileName||'файл')};
- window.SetStatusChanged=function(text){if(text)status.textContent=String(text)};
- window.GameDetails=function(serverName,serverURL,mapName,maxPlayers,steamID,gameMode){
-   if(mapName)status.textContent='Загрузка карты: '+String(mapName);
+ async function playTrack(){
+  audio.src=tracks[index].src;
+  try{await audio.play();playing=true;$('songState').textContent='Сейчас играет · ВАСЯГРАД'}
+  catch(e){playing=false;$('songState').textContent='Браузер заблокировал автозапуск — нажми ▶'}
+  renderMusic();
+ }
+ toggle.addEventListener('click',async()=>{if(playing){audio.pause();playing=false;renderMusic()}else await playTrack()});
+ next.addEventListener('click',async()=>{index=(index+1)%tracks.length;if(playing)await playTrack();else{audio.src=tracks[index].src;renderMusic()}});
+ audio.addEventListener('ended',()=>{index=(index+1)%tracks.length;playTrack()});
+ audio.addEventListener('error',()=>{$('songState').textContent='Не удалось загрузить аудиофайл';playing=false;renderMusic()});
+ function setProgress(){
+  if(!gotTotal)return;
+  const done=Math.max(0,Math.min(total,total-needed));
+  const p=total===0?100:Math.round(done/total*100);
+  $('progressFill').style.width=p+'%';
+  $('progressPercent').textContent=p+'%';
+  $('progressStatus').textContent=needed>0?'Загрузка файлов':'Файлы загружены';
+  $('serverState').textContent=needed>0?'DOWNLOADING':'FILES READY';
+  $('detailStatus').textContent=needed>0?'Загружено файлов: '+done+' из '+total:'Загрузка файлов завершена';
+ }
+ // Garry's Mod loading-screen callbacks (Facepunch API).
+ window.GameDetails=function(serverName,serverURL,mapName,maxPlayers,steamID,gameMode,volume,language){
+  if(serverName)$('detailStatus').textContent=String(serverName);
+  if(mapName)$('fileStatus').textContent='Карта сервера: '+String(mapName);
+  if(gameMode)$('serverState').textContent=String(gameMode).toUpperCase();
+  if(typeof volume==='number')audio.volume=Math.max(0,Math.min(1,volume));
  };
- show();
- // Attempt autoplay immediately; Chromium may require a user click.
- play();
+ window.SetFilesTotal=function(total){
+  total=Math.max(0,Number(total)||0);
+  if(!gotTotal||total!==0){total=total;totalFiles=total;total=totalFiles;}
+  total=totalFiles;
+  total=Number(total)||0;
+  total= Math.max(0,total);
+  window.__vasagradTotal=total;
+  totalFiles=total;
+  gotTotal=true;
+  needed=total;
+  setProgress();
+ };
+ window.SetFilesNeeded=function(count){
+  needed=Math.max(0,Number(count)||0);
+  gotTotal=true;
+  if(!Number.isFinite(totalFiles))totalFiles=needed;
+  setProgress();
+ };
+ window.DownloadingFile=function(fileName){
+  lastFile=String(fileName||'');
+  $('fileStatus').textContent=lastFile?'Сейчас загружается: '+lastFile:'Загрузка файла…';
+  $('serverState').textContent='DOWNLOADING';
+ };
+ window.SetStatusChanged=function(status){
+  if(!status)return;
+  $('detailStatus').textContent=String(status);
+  $('serverState').textContent='CONNECTING';
+  if(!gotTotal)$('progressStatus').textContent='Подключение';
+ };
+ renderMusic();
+ // First attempt at automatic playback. Some Chromium builds require user interaction.
+ playTrack();
 })();
 </script>
 </body>
